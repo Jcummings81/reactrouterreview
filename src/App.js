@@ -5,10 +5,25 @@ import Card from './Card'
 class App extends React.Component {
   state = { cards: [], editing: null }
 
-  
+
 
   render() {
     const { editing, cards } = this.state
+
+    showCards = () => {
+      const { cards } = this.state
+      return (
+        <div className="row">
+          {cards.map( card => 
+            <Card
+            key={card.id}
+            {...card}
+            />
+          )
+          }
+        </div>
+      )
+    }
 
     return (
       <div className="container">
