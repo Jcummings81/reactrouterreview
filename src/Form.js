@@ -4,6 +4,23 @@ class Form extends React.Component {
     initialState = { front: '', back: '' }
     state = {...this.initialState}
 
+    componentDidUpdate(prevProps, prevState) {
+        const { editing } = this.props
+        if (prevProps.editing !== this.props.editing ) {
+        if (editing) 
+            this.setState({...editing})
+        }
+    }
+
+    cancel = () => {
+        const {editing} = this.props
+        if (editing) {
+            this.setState({...editing})
+                } else {
+                    this.setState({...this.initialState})
+                }
+    }
+
     handleChange = (e) => {
         const {name, value } = e.target
         this.setState({ [name]: value })
@@ -11,6 +28,19 @@ class Form extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const {editing, handleSubmit} = this.props
+        const { front, back } = this.state
+        let card = editing || {}
+        card.front = front
+        card.back = back
+        card.show = card.show || 'front'
+        card.id = card.id || this.genId()
+        handleSubmit(card)
+        this.setState({...this.initialState})
+    }
+
+    genId = () => {
+        return Math.floor(Math.random() * 1000 )
     }
 
 
