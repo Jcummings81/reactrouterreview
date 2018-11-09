@@ -5,12 +5,14 @@ class Form extends React.Component {
     state = {...this.initialState}
 
     handleChange = (e) => {
-
+        const {name, value } = e.target
+        this.setState({ [name]: value })
     }
 
     handleSubmit = (e) => {
-        
+        e.preventDefault()
     }
+
 
     render() {
         const { front, back } = this.state
