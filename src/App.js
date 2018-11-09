@@ -29,11 +29,14 @@ class App extends React.Component {
 
   toggleEdit = (id) => {
 
+    
   }
 
   deleteCard = (id) => {
-
+    this.setState({cards: this.state.cards.filter( c => c.id !== id)})
   }
+
+
   showCards = () => {
     const { cards } = this.state
     return (
