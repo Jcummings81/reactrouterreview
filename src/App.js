@@ -9,7 +9,7 @@ class App extends React.Component {
     const { cards } = this.state
     return (
       <div className="row">
-        {cards.map( card => 
+        { cards.map( card => 
           <Card
           key={card.id}
           {...card}
