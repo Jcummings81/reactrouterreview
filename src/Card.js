@@ -19,6 +19,8 @@ const Card = ({
              </div>
                 <div className="card-action">
                     <button className="btn" onClick={() => flipCard(id)}>Flip</button>
+                    <button className="btn" onClick={() => toggleEdit(id)}>Edit</button>
+                    <button className="btn" onClick={() => deleteCard(id)}>Delete</button>
                 </div>
         </div>
     </div>
